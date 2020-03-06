@@ -1,0 +1,14 @@
+body{
+    margin: 0;
+}
+
+.map{
+    height: 100vh;
+    width: 100%
+}
+
+
+.pin{
+    color: green;
+    background-color: green;
+}

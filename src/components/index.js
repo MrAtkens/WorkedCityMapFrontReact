@@ -1,0 +1,9 @@
+export { default as Slider } from './Slider';
+export { default as Banner } from './Banner'; 
+export { default as Banners } from './Banners';
+export { default as Footer } from './Footer';
+export { default as DeliveryGrid } from './DeliveryGrid';
+export { default as AboutUsGrid } from './AboutUsGrid';
+export { default as StockGrid } from './StockGrid';
+export { default as CartProduct } from './CartProduct';
+export { default as FullCartProduct } from './FullCartProduct';
