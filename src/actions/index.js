@@ -1,0 +1,1 @@
+export { mapMarkersGet } from './ mapAction'
