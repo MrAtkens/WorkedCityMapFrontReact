@@ -1,1 +1,2 @@
 export { mapMarkersGetApi } from './mapApi'
+

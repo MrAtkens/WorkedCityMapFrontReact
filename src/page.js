@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import { connect } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
 import { Route, Switch, Redirect } from 'react-router-dom'
 
@@ -45,8 +44,4 @@ class Main extends Component{
     }
 }
 
-const mapDispatchToProps = {
-
-}
-
-export default connect(null, mapDispatchToProps)(Main)
+export default Main

@@ -6,7 +6,13 @@ const dashboardRoutes = [
         layout: "/",
         name: "MainMap",
         component: MainMap,
-    }
+    },
+    // {
+    //     path: "/:id",
+    //     layout: "/map",
+    //     name: "PinId",
+    //     component:
+    // }
   ];
   
   export default dashboardRoutes;
