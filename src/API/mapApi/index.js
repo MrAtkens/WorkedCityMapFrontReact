@@ -10,6 +10,13 @@ export const mapMarkersGetApi = async () => {
     })
 }
 
+export const mapMarkerGetByIdApi = async (id) => {
+    return await axios.get(`http://${URL}/api/public/GetPublicMapPinById/${id}`).then(response => {
+        console.log(response.data)
+        return response.data
+    })
+}
+
 // export const mapMarkerAddApi = async () => {
 //     return await axios.post(`http://${URL}/singIn`, {
 //         phone: userPhone,

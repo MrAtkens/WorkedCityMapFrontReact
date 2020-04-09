@@ -18,7 +18,7 @@ const switchRoutes = (
         }
         return null;
       })}
-        <Redirect from="/" to="/main" />
+        <Redirect from="/" to="/map" />
     </Switch>
   );
 

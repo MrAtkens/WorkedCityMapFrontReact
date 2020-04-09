@@ -15,7 +15,7 @@ class App extends Component {
     <Router history={hist}>
       <Switch>
         <Route path="/" component={Main} />
-        <Redirect from="/" to="/main" />
+        <Redirect from="/" to="/map" />
       </Switch>
     </Router>
    </BrowserRouter>

@@ -1,18 +1,18 @@
-import { MainMap }  from './containers'
+import { MainMap, PinView }  from './containers'
 
 const dashboardRoutes = [
     {
-        path: "main",
+        path: "map",
         layout: "/",
         name: "MainMap",
         component: MainMap,
     },
-    // {
-    //     path: "/:id",
-    //     layout: "/map",
-    //     name: "PinId",
-    //     component:
-    // }
+    {
+        path: "map/pin/:id",
+        layout: "/",
+        name: "PinView",
+        component: PinView
+    }
   ];
   
   export default dashboardRoutes;

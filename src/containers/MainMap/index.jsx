@@ -1,14 +1,12 @@
 
 import React, { Component } from 'react'
 import { ReactLeafletZoomIndicator } from 'react-leaflet-zoom-indicator'
-import { Map, TileLayer, Marker, Popup, Rectangle } from 'react-leaflet'
-import { Dialog, Paper, Button, Typography } from '@material-ui/core'
+import { Map, TileLayer } from 'react-leaflet'
 import { observer } from "mobx-react";
 
 import appStore from '../../store'
 import { PinsView } from '../index'
 
-import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import './style.css'
 
@@ -17,14 +15,8 @@ const outer = [
     [51.020672, 71.228844],
 ]
 
-const myIcon = new L.Icon({
-    iconUrl: require('./problemPin.svg'),
-    iconRetinaUrl: require('./problemPin.svg'),
-    iconSize: new L.Point(15, 30),
-});
 
-
-class MainMap extends Component {
+export @observer class MainMap extends Component {
     state = {
         bounds: outer,
         centerPosition: [51.165145, 71.419850],
@@ -37,9 +29,12 @@ class MainMap extends Component {
         appStore.switchIsOpen()
     }
 
+    componentDidMount() {
+        appStore.getMapsPin()
+    }
+
     render() {
-        const { isOpen, isLoaded, getMapsPin, switchIsOpen } = appStore
-        console.log(isOpen)
+        const { isLoaded, getMapsPin, switchIsOpen } = appStore
         if(isLoaded === false) {
             return (
                 <div></div>
@@ -56,12 +51,6 @@ class MainMap extends Component {
                             />
                             <PinsView />
                         </Map>
-                        <Dialog open={isOpen} onClose={this.dialogHandleClick} id="dialog1">
-                            <div>
-                                You fagot
-                                <button className={'root'}> Kalo</button>
-                            </div>
-                        </Dialog>
                     </div>
             );
         }
@@ -69,4 +58,3 @@ class MainMap extends Component {
 }
 
 
-export default observer(MainMap)
