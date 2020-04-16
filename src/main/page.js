@@ -30,7 +30,7 @@ class Main extends Component{
         <div>
               <div>{switchRoutes}</div>
           <ToastContainer
-              position={'top-left'}
+              position="bottom-right"
               autoClose={5000}
               hideProgressBar={false}
               newestOnTop={false}

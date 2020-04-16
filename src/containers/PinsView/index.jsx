@@ -10,28 +10,26 @@ import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
 const myIcon = new L.Icon({
-    iconUrl: require('http://localhost:54968/images/problemPin.svg'),
-    iconRetinaUrl: require('http://localhost:54968/images/problemPin.svg'),
+    iconUrl: require('./problemPin.svg'),
+    iconRetinaUrl: require('./problemPin.svg'),
     iconSize: new L.Point(15, 30),
 });
 
+@observer
+class PinsView extends Component {
 
-export @observer class PinsView extends Component {
-
-    dialogHandleClick() {
-        appStore.switchIsOpen()
+    handleMarkerOnClick(id){
+        appStore.setPinId(id)
     }
 
     render() {
-        const { mapPins, getMapsPin, switchIsOpen } = appStore
+        const { mapPins, getMapsPin } = appStore
         return (
             <div>
                 {mapPins.map(value => {
                     const position = [value.lat, value.lng]
                     return (
-                        <Link to={`/pin/${value.id}`}>
-                            <Marker key={value.id} icon={myIcon} position={position} onClick={this.dialogHandleClick}/>
-                        </Link>
+                            <Marker key={value.id}  icon={myIcon} position={position} onClick={(event) => this.handleMarkerOnClick(value.id)} />
                     )
                 })}
             </div>
@@ -40,3 +38,4 @@ export @observer class PinsView extends Component {
 }
 
 
+export default PinsView;

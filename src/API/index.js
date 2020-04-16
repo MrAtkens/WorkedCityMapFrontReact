@@ -1,2 +1,2 @@
-export { mapMarkersGetApi, mapMarkerGetByIdApi } from './mapApi'
+export { mapMarkersGetApi, mapMarkerGetByIdApi, mapMarkerAdd } from './mapApi'
 

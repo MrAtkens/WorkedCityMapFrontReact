@@ -5,8 +5,15 @@
 }
 
 .card{
-    padding: 50px;
-    height: 100%;
+    margin: 30px 40px 30px 40px;
+    padding-left: 20px;
+    padding-top: 20px;
+    height: 45vh;
+}
+
+.card-gallery{
+    margin: 30px;
+    height: 40vh;
 }
 
 .card-description{

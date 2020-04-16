@@ -1,4 +1,4 @@
-import { MainMap, PinView }  from './containers'
+import { MainMap, PinView }  from '../containers'
 
 const dashboardRoutes = [
     {
@@ -8,7 +8,7 @@ const dashboardRoutes = [
         component: MainMap,
     },
     {
-        path: "map/pin/:id",
+        path: "pin/:id",
         layout: "/",
         name: "PinView",
         component: PinView
