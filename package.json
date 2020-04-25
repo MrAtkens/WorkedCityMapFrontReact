@@ -56,6 +56,7 @@
     "react-body-classname": "^1.3.1",
     "react-dev-utils": "^10.2.1",
     "react-dom": "^16.13.1",
+    "react-geolocated": "^3.0.1",
     "react-leaflet": "^2.6.3",
     "react-leaflet-zoom-indicator": "^0.1.2",
     "react-router-dom": "^5.1.2",
@@ -144,7 +145,14 @@
     ]
   },
   "babel": {
-    "plugins": [["@babel/plugin-proposal-decorators", { "legacy": true }]],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ]
+    ],
     "presets": [
       "react-app"
     ]

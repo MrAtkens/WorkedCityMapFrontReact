@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { Fab } from '@material-ui/core'
+import { Fab, Tooltip } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add';
 import SendIcon from '@material-ui/icons/Send';
 import { ReactLeafletZoomIndicator } from 'react-leaflet-zoom-indicator'
@@ -8,7 +8,7 @@ import { Map, TileLayer } from 'react-leaflet'
 import { observer } from 'mobx-react'
 import { Redirect } from 'react-router-dom'
 
-import appStore from '../../store'
+import { mapStore } from '../../store'
 import { PinsView } from '../index'
 
 import 'leaflet/dist/leaflet.css'
@@ -30,21 +30,26 @@ class MainMap extends Component {
     }
 
     dialogHandleClick(){
-        appStore.switchIsOpen()
+        mapStore.switchIsOpen()
+    }
+
+    onMapClick(info){
+        console.log(info)
+        
     }
 
     componentDidMount() {
-        appStore.getMapsPin()
+        mapStore.getMapsPin()
     }
 
     renderRedirect(){
-        if(appStore.pinId !== null){
-            return(<Redirect to={`/pin/${appStore.pinId}`} push />)
+        if(mapStore.pinId !== null){
+            return(<Redirect to={`/pin/${mapStore.pinId}`} push />)
         }
     }
 
     render() {
-        const { isLoaded, getMapsPin, switchIsOpen } = appStore
+        const { isLoaded, getMapsPin, switchIsOpen } = mapStore
         if(isLoaded === false) {
             return (
                 <div></div>
@@ -54,7 +59,7 @@ class MainMap extends Component {
             return(
                     <div>
                         {this.renderRedirect()}
-                        <Map maxBounds={this.state.bounds} className='map' center={this.state.centerPosition} zoom={this.state.zoom}
+                        <Map maxBounds={this.state.bounds} className='map' center={this.state.centerPosition} onClick={info => this.onMapClick(info)} zoom={this.state.zoom}
                              minZoom={this.state.minZoom} maxZoom={this.state.maxZoom} zoomControll={true}>
                             <TileLayer
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -62,14 +67,11 @@ class MainMap extends Component {
                             />
 
                             <div className="fab-list">
-                                <Fab className="fab" color="secondary" aria-label="send">
-                                    <SendIcon />
-                                </Fab>
-                                <Link to='/create'>
-                                    <Fab className="fab" color="primary" aria-label="add">
-                                        <AddIcon />
+                                <Tooltip placement={"left"} title="Напишите ваши отзывы" arrow>
+                                    <Fab className="fab" color="secondary" aria-label="send">
+                                        <SendIcon />
                                     </Fab>
-                                </Link>
+                                </Tooltip>
                             </div>
                             <PinsView />
                         </Map>

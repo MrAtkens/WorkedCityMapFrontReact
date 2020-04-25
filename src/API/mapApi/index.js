@@ -29,8 +29,8 @@ export const mapMarkerGetByIdApi = async (id) => {
 }
 
 
-export const mapMarkerAdd = async (problemPin) => {
-    return await axios.post(`http://${URL}/api/public/CreateProblemPin`, {problemPin}).then(response => {
+export const mapMarkerAdd = async (problemPinDTO) => {
+    return await axios.post(`http://${URL}/api/public/CreateProblemPin`, {problemPinDTO}).then(response => {
         console.log(response.status)
         if(response.status === 500){
             toastServerError()

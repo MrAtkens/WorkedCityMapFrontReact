@@ -4,7 +4,7 @@ import { Marker } from 'react-leaflet'
 import { observer } from "mobx-react";
 import { Link } from 'react-router-dom'
 
-import appStore from '../../store'
+import {mapStore} from '../../store'
 
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
@@ -19,11 +19,11 @@ const myIcon = new L.Icon({
 class PinsView extends Component {
 
     handleMarkerOnClick(id){
-        appStore.setPinId(id)
+        mapStore.setPinId(id)
     }
 
     render() {
-        const { mapPins, getMapsPin } = appStore
+        const { mapPins } = mapStore
         return (
             <div>
                 {mapPins.map(value => {
