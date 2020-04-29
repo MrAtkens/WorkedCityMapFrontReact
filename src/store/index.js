@@ -1,2 +1,3 @@
-export { Store as mapStore } from 'mapStore'
-export { Store as userStore } from 'userStore'
+export {default as mapStore} from './mapStore'
+export {default as userStore} from './userStore'
+export {default as pinCreateStore} from './pinCreateStore'

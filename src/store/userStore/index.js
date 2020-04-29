@@ -1,5 +1,4 @@
 import { observable, configure, action, decorate } from "mobx"
-import { mapMarkersGetApi, mapMarkerGetByIdApi, mapMarkerAdd } from '../API'
 
 configure({ enforceActions: 'observed'})
 

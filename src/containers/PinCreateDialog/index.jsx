@@ -4,16 +4,7 @@ import { Marker } from 'react-leaflet'
 import { observer } from "mobx-react";
 import { Link } from 'react-router-dom'
 
-import { userStore } from '../../store'
-
-import L from 'leaflet'
-import 'leaflet/dist/leaflet.css'
-
-const myIcon = new L.Icon({
-    iconUrl: require('./problemPin.svg'),
-    iconRetinaUrl: require('./problemPin.svg'),
-    iconSize: new L.Point(15, 30),
-});
+import { userStore }  from '../../store'
 
 @observer
 class PinsView extends Component {

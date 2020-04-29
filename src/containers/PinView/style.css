@@ -4,19 +4,22 @@
     background-color: #EDEEF0;
 }
 
-.card{
+.grid-desc{
     margin: 30px 40px 30px 40px;
     padding-left: 20px;
     padding-top: 20px;
-    height: 45vh;
 }
 
-.card-gallery{
+.typ-headers{
+    text-align: center;
+}
+
+.gallery{
     margin: 30px;
     height: 40vh;
 }
 
-.card-description{
-    font-size: 16pt;
+.description{
+    font-size: 20pt;
     padding: 20px;
 }
