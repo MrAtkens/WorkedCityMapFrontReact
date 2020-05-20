@@ -1,21 +1,22 @@
-import { observable, configure, action, decorate } from "mobx"
-import { mapMarkersGetApi, mapMarkerGetByIdApi, mapMarkerAdd } from '../../API'
+import { observable, configure, action } from "mobx"
+import { mapMarkersGetApi, mapMarkerGetByIdApi } from '../../API'
+import {createContext} from 'react'
 
 configure({ enforceActions: 'observed'})
 
-class Store {
+class MapStore {
 
     @observable isLoaded = false
     @observable isPinLoaded = false
+    @observable isOpen = false
     @observable pinId = null
     @observable zoom = 13
     centerPositions = observable.object( {lat: 51.165145, lng: 71.419850});
     mapPins = observable.array([]);
-    mapPin = observable.object({name: "", problemDescription: "", address: "", images: "", creationDate: ""});
+    mapPin = observable.object({name: "", problemDescription: "", address: "", images: [], creationDate: ""});
 
     @action async getMapsPin(){
         const pins = await mapMarkersGetApi()
-        console.log(pins.publicPins)
         this.setPins(pins.publicPins)
         this.setIsLoaded(pins.status)
     }
@@ -26,6 +27,12 @@ class Store {
         this.setIsPinLoaded(pin.status)
     }
 
+    @action dialogHandleClose(){
+        this.setIsOpen(false)
+    }
+    @action dialogHandleOpen(){
+        this.setIsOpen(true)
+    }
 
     @action setPins(pins){
         this.mapPins = pins
@@ -47,6 +54,10 @@ class Store {
         this.isPinLoaded = status
     }
 
+    @action setIsOpen(status){
+        this.isOpen = status
+    }
+
 };
 
-export default new Store();
+export const MapStoreContext = createContext(new MapStore())

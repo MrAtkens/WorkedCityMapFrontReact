@@ -13,6 +13,9 @@ body{
     width: 100%;
 }
 
+.link-button{
+    text-decoration: none;
+}
 
 .fab{
     z-index: 1000;

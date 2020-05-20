@@ -1,4 +1,4 @@
-import { toastServerError, toastMarkerNotFound, toastThanksForAdd } from '../../tools'
+import { toastServerError, toastMarkerNotFoundError, toastThanksForAdd } from '../../tools'
 import axios from 'axios'
 axios.defaults.withCredentials = true
 
@@ -17,14 +17,18 @@ export const mapMarkerGetByIdApi = async (id) => {
         if(response.status === 500)
             toastServerError()
         else if (response.status === 404)
-            toastMarkerNotFound()
+            toastMarkerNotFoundError()
         return response.data
     })
 }
 
 
 export const mapMarkerAdd = async (problemPinDTO) => {
-    return await axios.post(`http://${URL}/api/public/CreateProblemPin`, {problemPinDTO}).then(response => {
+    console.log(problemPinDTO)
+    return await axios.post(`http://${URL}/api/Public/CreateProblemPin`, problemPinDTO, {
+        headers: {'Content-Type': 'multipart/form-data' }
+    }).then(response => {
+            console.log(response)
         if(response.status === 500)
             toastServerError()
         else if(response.status === 200)

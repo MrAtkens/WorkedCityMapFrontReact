@@ -1,1 +1,1 @@
-export { toastServerError, toastMarkerNotFound, toastThanksForAdd } from './toastifyTools'
+export { toastServerError, toastMarkerNotFoundError, toastThanksForAdd, toastImageRemoved, toastValidationError } from './toastifyTools'
