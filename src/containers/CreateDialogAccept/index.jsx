@@ -11,7 +11,8 @@ import { observer } from 'mobx-react' // 6.x or mobx-react-lite@1.4.0
 import { SystemStoreContext, PinCreateContext }  from '../../store'
 import { toastImageRemoved, toastValidationError } from  '../../tools'
 
-import './style.css'
+import './style.scss'
+
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -58,6 +59,11 @@ const CreateDialogAccept = observer((props) => {
             pinCreateStore.addProblemPin(name, description)
     }
 
+    const isPinAdded = () => {
+        if(pinCreateStore.isCreated)
+            systemStore.setIsOpen(false)
+    }
+
     return(
         <Dialog
             fullWidth={true}
@@ -67,15 +73,15 @@ const CreateDialogAccept = observer((props) => {
             TransitionComponent={Transition}
             onClose={handleDialogClose}
             keepMounted
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-slide-description">
-            <DialogTitle id="alert-dialog-slide-title">Если вы хотите сообщить о проблеме связанной с инфраструктурой города к примеру: поломанный бордюр, открытый люк или побитая дорога. +
+            aria-labelledby="alert-dialog-title">
+            {isPinAdded()}
+            <DialogTitle className="dio-title" id="alert-dialog-title">Если вы хотите сообщить о проблеме связанной с инфраструктурой города к примеру: поломанный бордюр, открытый люк или побитая дорога. +
             Вам надо заполнить данные и отправить их нам на модерацию. Дабы наша работа проходила быстрее пожалуйста вводите нормальные имена и описание проблемы, также загружайте фотографий связанные
-            с проблемой которую вы хотите описать</DialogTitle>
+                с проблемой которую вы хотите описать</DialogTitle>
             <DialogContent>
                 <form noValidate autoComplete="off">
                     <Grid container>
-                        <Grid className="input-row" item xs={12}>
+                        <Grid item xs={12}>
                             <TextField
                                 error={pinCreateStore.nameError}
                                 label="Введите название проблемы"
@@ -86,7 +92,7 @@ const CreateDialogAccept = observer((props) => {
                                 required
                                 variant="outlined"/>
                         </Grid>
-                        <Grid className="input-row" item xs={12}>
+                        <Grid item xs={12}>
                             <TextField
                                 error={pinCreateStore.descriptionError}
                                 label="Введите описание проблемы"

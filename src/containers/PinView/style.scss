@@ -1,6 +1,7 @@
+$mainGrid: #EDEEF0;
+
 .mainGrid{
-    height: 100%;
-    background-color: #EDEEF0;
+    background-color: $mainGrid;
 }
 
 .grid-description{
@@ -15,8 +16,6 @@
 .typ-headers{
     text-align: center;
     font-style: normal;
-    font-weight: 400;
-    font-family: 'PT Sans', sans-serif;
 }
 
 .gallery{
@@ -44,7 +43,7 @@ img{
     --organic-arrow-thickness: 10px;
     --organic-arrow-border-radius: 16px;
     --organic-arrow-height: 40px;
-    --organic-arrow-color: #000000;
+    --organic-arrow-color: #EDEEF0;
     --control-button-width: 5%;
     --control-button-height: 25%;
     --control-button-background: transparent;

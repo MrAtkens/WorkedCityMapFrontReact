@@ -8,7 +8,6 @@ class MapStore {
 
     @observable isLoaded = false
     @observable isPinLoaded = false
-    @observable isOpen = false
     @observable pinId = null
     @observable zoom = 13
     centerPositions = observable.object( {lat: 51.165145, lng: 71.419850});
@@ -25,13 +24,6 @@ class MapStore {
         const pin = await mapMarkerGetByIdApi(id)
         this.setPin(pin.problemPin)
         this.setIsPinLoaded(pin.status)
-    }
-
-    @action dialogHandleClose(){
-        this.setIsOpen(false)
-    }
-    @action dialogHandleOpen(){
-        this.setIsOpen(true)
     }
 
     @action setPins(pins){
@@ -54,9 +46,6 @@ class MapStore {
         this.isPinLoaded = status
     }
 
-    @action setIsOpen(status){
-        this.isOpen = status
-    }
 
 };
 

@@ -31,8 +31,9 @@ export const mapMarkerAdd = async (problemPinDTO) => {
             console.log(response)
         if(response.status === 500)
             toastServerError()
-        else if(response.status === 200)
+        else if(response.status === 200) {
             toastThanksForAdd()
+        }
         return response.data
     })
 }

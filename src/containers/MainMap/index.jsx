@@ -8,7 +8,7 @@ import { toastServerError } from '../../tools'
 
 import { MapStoreContext, PinCreateContext, SystemStoreContext }  from '../../store'
 import CreateDialogAccept from '../CreateDialogAccept'
-import './style.css'
+import './style.scss'
 
 const LoadingContainer = (props) => (
     <div>Fancy loading container!</div>
@@ -21,7 +21,7 @@ const MainMap = observer((props) => {
 
     useEffect(() => {
         mapStore.getMapsPin()
-    })
+    }, [])
 
     const onMapClick = (mapProps, map, clickEvent) => {
         const geocoder = new mapProps.google.maps.Geocoder();
@@ -49,14 +49,14 @@ const MainMap = observer((props) => {
      }
 
         if (mapStore.isLoaded === false) {
-            return (<div>Loaded</div>)
+            return (<div className="loader-wrapper">Loaded</div>)
         }
         else {
             return(
                     <div>
                         {renderRedirect()}
                         <Map google={props.google} zoom={mapStore.zoom}
-                             style={{ width: '100%', height: '100%', position: 'relative' }}
+                             className="map"
                              initialCenter={mapStore.centerPositions}
                              streetViewControl={false}
                              fullscreenControl={false}

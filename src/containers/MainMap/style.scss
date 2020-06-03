@@ -1,10 +1,20 @@
+$bkgcolor: #323332;
+
 body{
     margin: 0;
 }
 
+.loader-wrapper{
+    width: 100vw;
+    height: 100vh;
+    background: $bkgcolor;
+}
+
+
 .map{
+    width:100%;
     height: 100%;
-    width: 100%;
+    position: relative
 }
 
 .container{

@@ -8,7 +8,7 @@ import { MapStoreContext, SystemStoreContext }  from '../../store'
 
 import 'react-awesome-slider/dist/styles.css';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
-import './style.css'
+import './style.scss'
 
 const PinView = observer(() => {
     const mapStore = useContext(MapStoreContext)
@@ -16,9 +16,10 @@ const PinView = observer(() => {
     const { id } = useParams();
 
     useEffect(() => {
+        mapStore.setIsPinLoaded(false)
         mapStore.getMapPinById(id)
         mapStore.setPinId(null)
-    });
+    },[]);
 
     if (mapStore.isPinLoaded === false) {
             return (<div>Loaded</div>)
