@@ -1,10 +1,10 @@
 import axios from 'axios'
 axios.defaults.withCredentials = true
 
-const URL='localhost:3444'
+const URL='localhost:44318'
 
 export const userSingInApi = async (userPhone, userPassword,isRemember) => {
-  return await axios.post(`http://${URL}/singIn`, {
+  return await axios.post(`https://${URL}/singIn`, {
     phone: userPhone,
     password: userPassword,
     rememberOption: isRemember
@@ -14,7 +14,7 @@ export const userSingInApi = async (userPhone, userPassword,isRemember) => {
 }
 
 export const userSingUpApi = async (userPhone, userName, userCode, userPassword, userEmail) => {
-  return await axios.post(`http://${URL}/singUp`, {
+  return await axios.post(`https://${URL}/singUp`, {
     name: userName,
     phone: userPhone,
     code: userCode,
@@ -26,7 +26,7 @@ export const userSingUpApi = async (userPhone, userName, userCode, userPassword,
 }
 
 export const userAcceptCodeApi = async (userPhone, userStatus) => {
-  return await axios.post(`http://${URL}/acceptPhone`, {
+  return await axios.post(`https://${URL}/acceptPhone`, {
     status: userStatus,
     phone: userPhone }).then(response => {
     console.log(response.data)
